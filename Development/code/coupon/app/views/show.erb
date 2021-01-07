@@ -1,0 +1,15 @@
+<h1>Coupon Details</h1>
+
+<h2> Store: <%@coupon.store_id%>
+
+
+<h3> Coupon's code <%@coupon.code%>
+
+
+<h4> Description <%@coupon.decription%>
+ <form action="/coupons/<%= @coupon.id %"> method="post">
+       <input type="hidden" name="_method" value="delete"> 
+       <button type="submit">Delete Coupon</button>
+ </form>
+
+
