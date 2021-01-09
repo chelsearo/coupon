@@ -1,3 +1,4 @@
 class Coupon < ActiveRecord::Base
-has_many:user
+    has_many :user_coupons
+    has_many :users, through: :user_coupons
 end

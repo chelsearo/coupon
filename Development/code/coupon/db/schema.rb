@@ -19,19 +19,14 @@ ActiveRecord::Schema.define(version: 20210107182251) do
     t.string "description"
   end
 
-  create_table "usercoupons", force: :cascade do |t|
-    t.string "user_id"
-    t.string "coupon_id"
+  create_table "user_coupons", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "coupon_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
-  end
-
-  create_table "userscoupons", force: :cascade do |t|
-    t.string "user_id"
-    t.string "coupon_id"
+    t.string "password_digest"
   end
 
 end

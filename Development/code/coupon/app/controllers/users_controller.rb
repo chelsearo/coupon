@@ -1,20 +1,26 @@
 class UsersController < ApplicationController
-    get  '/signup' do
-        erb :'users/signup'
-     end 
-
-     post '/users' do
-        user = User.new(params)
-         if user.username.empty? || user.password.empty?
-           @error = "Username and Password cannot be blank"
-             erb :'users/signup'
-         elsif User.find_by(username: user.username)
-               @error = "That Username Already Exists!"
-               erb :'users/signup'
+   
+    
+      get '/login' do
+          erb :'users/login'
+      end 
+    
+      post '/login' do
+        user = User.find_by(:username=> params[:username])
+        if user && user.authenticate(params[:password])
+          session[:user_id] = user.id
+          redirect to "/coupons"
         else
-           user.save 
-           session[:user_id] = user.id
-           redirect '/coupons'
-        end 
-     end 
-end 
+          redirect to '/signup'
+        end
+      end
+
+      get '/users/coupons' do
+        @user = User.find_by_id(session[:user_id])
+        erb :"users/showitems"
+      end 
+
+
+    
+    end 
+  

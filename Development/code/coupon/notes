@@ -1,35 +1,56 @@
 coupon database
-add data what coupons you have and how many of each 
-add what coupons you want or need and how many 
+add data what coupons you have 
 delete any you want 
 list by product name
 list by ecpiration data
 list by amount off highest to low or lowest to high
-list by digital or paper - beloigs tolist by manufacter or store - has many/belongs
-can only edit their own coupons
 if a boss user can add new coupons to database
 if basic user cannot upload coupons to data base
 
 
 
-store_name":{...}1 item
-"store_country":{...}1 item
-"code":{...}1 item
-"description":{...}1 item
-"store_id":{...}1 item
-
-INDEX ERROR
-
-<%@coupons.each do |c| %>
-<ul>
-  <li>
-  <%=c.store_name%>
-  <%=c.store_country%>
-  <%=c.code%>
-  <%=c.description%>
-  <%=c.store_id%>
-  <img src="">
-  </li>
-  </ul>
-
-  <%end%>
+# index
+    get "/coupon" do
+      @coupon = Coupon.all
+      erb :index
+    end
+  
+    # new
+    get "/coupon/new" do
+      @coupon = Coupon.new
+      erb :new
+    end
+  
+    # create
+    post "/coupon" do
+      @coupon = Coupon.create(params)
+      redirect to "/coupon/#{ @coupon.id }"
+    end
+  
+    # show
+    get "/coupon/:id" do
+      @coupon = Coupon.find(params[:id])
+      erb :show
+    end
+  
+    # edit
+    get "/coupon/:id/" do
+      @coupon = Coupon.find(params[:id])
+      erb :edit
+    end
+  
+    # update
+    patch "/coupon/:id" do
+      @coupon = Coupon.find(params[:id])
+      @coupon.update(params[:coupon])
+      redirect to "/coupon/#{ @coupon.id }"
+    end
+  
+    #destroy
+    delete "/coupons/:id" do
+      Coupon.destroy(params[:id])
+      redirect to "/coupons"
+    end
+  
+  
+  end

@@ -1,0 +1,12 @@
+<h1>Saved Coupons</h1>
+
+
+<% @user.coupons.each do |coupon| %>
+<%=coupon.code%>
+   <form action="/coupons/<%= coupon.id %>/delete" method="post">
+       <input type="hidden" name="_method" value="delete"> 
+       <button type="submit">Delete Coupon</button>
+ </form>
+
+<a href="/coupons/<%=coupon.id%>/edit">Edit Coupon </a>
+ <%end%>

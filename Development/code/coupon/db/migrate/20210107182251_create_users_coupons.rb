@@ -1,7 +1,7 @@
 class CreateUsersCoupons < ActiveRecord::Migration
-    create_table :usercoupons do |t|
-      t.string :user_id
-      t.string :coupon_id
+    create_table :user_coupons do |t|
+      t.integer :user_id
+      t.integer :coupon_id
     end 
   end
   

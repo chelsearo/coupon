@@ -1,0 +1,13 @@
+<h1>Available Codes</h1>
+
+<% @coupon.each do |x| %>
+  <h2><a href="/coupons/<%= x.id %>">Show more info</a> </h2>
+   <h2><%=x.description%></h2>
+   <p><%=x.store_name %> </p>
+   <p><%=x.code %> </p>
+   <%end%>
+
+
+
+
+  

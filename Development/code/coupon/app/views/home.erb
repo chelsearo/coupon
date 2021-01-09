@@ -24,12 +24,21 @@ div {text-align: center;}
 
 
 
-<h2>Login</h2>
-<form>
-  <input type="email">
-  <input type="password">
-  <input type="submit">
-</form>
+<h2>Login Or Sign up</h2>
+<nav>
+  <% if logged_in? %>
+
+    <a href="/coupons/new"> Create </a>
+    <a href="/logout"> Log Out </a>
+    <p>Welcome, <%=current_user.username %></p>
+
+  <% else %>
+    <a href="/signup">Sign Up</a>
+    <a href="/login"> Sign In </a>
+  <%end %>
+
+</nav>
+
 
 
 <head>

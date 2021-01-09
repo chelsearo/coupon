@@ -1,0 +1,15 @@
+<form action="/coupons/<%= @coupon.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <ul>
+    <li>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="Coupon[store]" value="<%= @coupon.store_id %>" />
+    </li>
+    <li>
+      <label for="content">Details</label>
+      <textarea id="content" type="text" name="coupon[content]"  value="<%= @coupon.decription%>">
+      </textarea>
+    </li>
+  </ul>
+  <input type="submit" />
+</form>
